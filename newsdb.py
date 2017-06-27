@@ -19,8 +19,7 @@ class PythonDatabaseInterface:
     def print_helper(self, rows):
         for row in rows:
             print('    '+row[0]+' - '+str(row[1]) + ' views')
-        print('----------------------------------------------------------------------')
-        
+
     def get_data(self, query):
         self.cursor.execute(query)
         rows = self.cursor.fetchall()
@@ -31,14 +30,21 @@ class PythonDatabaseInterface:
         rows = self.cursor.fetchall()
         for row in rows:
             print('    '+str(row[0])+' - '+str(row[1]) + '% errors')
-        print('----------------------------------------------------------------------')
-        
+
     def database_close(self):
         self.cursor.close()
         self.conn.close()
 
+
+# Put view subsq to the following area:
+
+
 # Extract the string from log.path to match articles.slug
 formatted_path = "(regexp_split_to_array(subsq.path, E'/article/'))[2]"
+
+# Put all other views(viewer, view_total, view_error, view_final)
+# at the following area:
+
 
 q1 = subsq+"select public.articles.title, nums from public.articles "\
      "join subsq on public.articles.slug = " + formatted_path +\
@@ -55,8 +61,11 @@ q3 = view_total + view_error + view_final + \
 pdi = PythonDatabaseInterface("dbname=news")
 print('Most popular articles:')
 r1 = pdi.get_data(q1)
+print('----------------------------------------------------------------------')
 print('Most popular authors:')
 r2 = pdi.get_data(q2)
+print('----------------------------------------------------------------------')
 print('Days with more than 1% errors:')
 r3 = pdi.get_data_probability(q3)
+print('----------------------------------------------------------------------')
 pdi.database_close()
