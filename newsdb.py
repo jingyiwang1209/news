@@ -19,7 +19,8 @@ class PythonDatabaseInterface:
     def print_helper(self, rows):
         for row in rows:
             print('    '+row[0]+' - '+str(row[1]) + ' views')
-
+        print('----------------------------------------------------------------------')
+        
     def get_data(self, query):
         self.cursor.execute(query)
         rows = self.cursor.fetchall()
@@ -30,7 +31,8 @@ class PythonDatabaseInterface:
         rows = self.cursor.fetchall()
         for row in rows:
             print('    '+str(row[0])+' - '+str(row[1]) + '% errors')
-
+        print('----------------------------------------------------------------------')
+        
     def database_close(self):
         self.cursor.close()
         self.conn.close()
@@ -53,11 +55,8 @@ q3 = view_total + view_error + view_final + \
 pdi = PythonDatabaseInterface("dbname=news")
 print('Most popular articles:')
 r1 = pdi.get_data(q1)
-print('----------------------------------------------------------------------')
 print('Most popular authors:')
 r2 = pdi.get_data(q2)
-print('----------------------------------------------------------------------')
 print('Days with more than 1% errors:')
 r3 = pdi.get_data_probability(q3)
-print('----------------------------------------------------------------------')
 pdi.database_close()
