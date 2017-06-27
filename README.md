@@ -9,7 +9,7 @@
 ### Secondly, 3 queries were created to query the database to get the answers for the 3 questions.
 
 ### A view function needs to be created for the efficient use of query 1:
-view = "create view subsq as select path, count(*) as nums from public.log "\
+subsq = "create view subsq as select path, count(*) as nums from public.log "\
        "where status = '200 OK' group by path order by nums desc;"
 
 ### For the query 1, a view called "subsq" above should be created to generate a new table with only successful access to the article pages. Then, the column "path" in the log table is formatted (the strings that matched the column "slug" in the articles table were extracted) as a condition for the query. The query shows the title of each article and the number of times readers access to each article, which gives the answer to the 1st question.
