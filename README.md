@@ -14,7 +14,7 @@
 
 ### Secondly, create 3 queries to query the database to get the answers for the 3 questions.
 
-### A view function needs to be created for the efficient creation of query 1 (put it to the area as indicated in newsdb.py):
+### A view function needs to be created for the efficient creation of query 1 (put it in the area indicated in newsdb.py):
 ```
 subsq = "create view subsq as select path, count(*) as nums from public.log "\
         "where status = '200 OK' group by path order by nums desc;"
@@ -22,7 +22,7 @@ subsq = "create view subsq as select path, count(*) as nums from public.log "\
 
 ### For the query 1, a view called "subsq" above should be created to generate a new table with only successful access to the article pages. Then, the column "path" in the log table is formatted (the strings that matched the column "slug" in the articles table were extracted) as a condition for the query. The query shows the title of each article and the number of times readers access to each article, which gives the answer to the 1st question.
 
-### A view function needs to be created for the efficient creation of query 2 (put it to the area as indicated in newsdb.py):
+### A view function needs to be created for the efficient creation of query 2 (put it in the area indicated in newsdb.py):
 [comment]: (Use 'left join' just for the extreme case which is probably very rare in reality: some author's all articles have not been read by any reader.)
 ```
 viewer = "create view viewer as select public.articles.author, "\
@@ -32,7 +32,7 @@ viewer = "create view viewer as select public.articles.author, "\
 ```
 ### For the query 2, a view called "viewer" above should be created to hold a table of each author's id and the total occurrences of each id. Then the query can be created with "viewer" joining the authors table to show each author's name and the total number of times readers access to all the articles of each author. The query 2 gives the answer to the 2nd question.
 
-### Some view functions need to be created for the efficient creation of query 3 (put them to the area as indicated in newsdb.py):
+### Some view functions need to be created for the efficient creation of query 3 (put them in the area indicated in newsdb.py):
 ```
 view_total = "create view total as select time::timestamp::date, "\
              "count(status) as total_count from public.log "\
