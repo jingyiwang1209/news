@@ -24,7 +24,7 @@ viewer = "create view viewer as select public.articles.author, "\
          "on public.articles.slug = " + formatted_path +\
          "group by public.articles.author;"\
 ```
-### For the query 2, a view called "viewer" above should be created to hold a table of each author's id and the occurrence of each id, based on query 1. Then the query can be created with "viewer" joining the authors table to show the each author's name and the total number of times readers access to all the articles of each author. The query 2 gives the answer to the 2nd question.
+### For the query 2, a view called "viewer" above should be created to hold a table of each author's id and the total occurrences of each id. Then the query can be created with "viewer" joining the authors table to show each author's name and the total number of times readers access to all the articles of each author. The query 2 gives the answer to the 2nd question.
 
 ### Some view functions need to be created for the efficient use of query 3:
 ```
