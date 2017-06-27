@@ -4,10 +4,10 @@
 ### 2. Who are the most popular article authors of all time?
 ### 3. Who are the most popular article authors of all time?
 
-## How to load the connect to the database news and run the python code
+## How to connect to the database news and run the python code.
 ### 1. Once newsdata.sql is downloaded, run ```psql -d news -f newsdata.sql``` at your terminal to connect to the databse news and run the SQL statement in the newsdata.sql
 ### 2. Run ```psql -d news``` to look at the details of the database news.
-### 3. Run ```\q``` to exit the database news and run ```python newsdb.py```. Your terminal will show the results of the quries.
+### 3. Run ```\q``` to exit the database news and run ```python newsdb.py```. Your terminal will show the results of the queries.
 
 ### First, a class called "PythonDatabaseInterface" was created as an interface to connect the database called news, execute and process queries.
 
