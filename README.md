@@ -25,7 +25,9 @@ subsq = "create view subsq as select path, count(*) as nums from public.log "\
 ### A view function needs to be created for the efficient creation of query 2 (put it in the area indicated in newsdb.py):
 
 [comment]: Extract the string from log.path to match articles.slug
-```formatted_path = "(regexp_split_to_array(subsq.path, E'/article/'))[2]"```
+```
+formatted_path = "(regexp_split_to_array(subsq.path, E'/article/'))[2]"
+```
 
 [comment]: (Use 'left join' just for the extreme case which is probably very rare in reality: some author's all articles have not been read by any reader.)
 ```
