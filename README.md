@@ -29,7 +29,7 @@ subsq = "create view subsq as select path, count(*) as nums from public.log "\
 formatted_path = "(regexp_split_to_array(subsq.path, E'/article/'))[2]"
 ```
 
-[comment]: (Use 'left join' just for the extreme case which is probably very rare in reality: some author's all articles have not been read by any reader.)
+[comment]: Use 'left join' just for the extreme case which is probably very rare in reality: some author's all articles have not been read by any reader.
 ```
 viewer = "create view viewer as select public.articles.author, "\
          "sum(nums) as nums from public.articles left join subsq "\
