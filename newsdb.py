@@ -38,14 +38,7 @@ class PythonDatabaseInterface:
         self.conn.close()
 
 
-# Put view subsq in the following area:
-
-
-# Extract the string from log.path to match articles.slug
-formatted_path = "(regexp_split_to_array(subsq.path, E'/article/'))[2]"
-
-# Put all other views(viewer, view_total, view_error, view_final)
-# in the following area:
+# Put views in the following area:
 
 
 q1 = subsq+"select public.articles.title, nums from public.articles "\
