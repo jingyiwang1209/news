@@ -20,14 +20,14 @@ subsq = "create view subsq as select path, count(*) as nums from public.log "\
         "where status = '200 OK' group by path order by nums desc;"
 ```
 
-### For the query 1, a view called "subsq" above should be created to generate a new table with only successful access to the article pages. Then, the column "path" in the log table is formatted (the strings that matched the column "slug" in the articles table were extracted) as a condition for the query. The query shows the title of each article and the number of times readers access to each article, which gives the answer to the 1st question.
-
-### A view function needs to be created for the efficient creation of query 2:
-
-[comment]: Extract the string from log.path to match articles.slug
+[comment]: a variable to store the extracted string from log.path to match articles.slug
 ```
 formatted_path = "(regexp_split_to_array(subsq.path, E'/article/'))[2]"
 ```
+
+### For the query 1, a view called "subsq" above should be created to generate a new table with only successful access to the article pages. Then, the column "path" in the log table is formatted (the strings that matched the column "slug" in the articles table were extracted) as a condition for the query. The query shows the title of each article and the number of times readers access to each article, which gives the answer to the 1st question.
+
+### A view function needs to be created for the efficient creation of query 2:
 
 [comment]: Use 'left join' just for the extreme case which is probably very rare in reality: some author's all articles have not been read by any reader.
 ```
