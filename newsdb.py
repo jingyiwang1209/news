@@ -38,7 +38,7 @@ class PythonDatabaseInterface:
         self.conn.close()
 
 
-# Put views in the following area:
+# Put views and variable(s) in the following area:
 
 
 q1 = subsq+"select public.articles.title, nums from public.articles "\
