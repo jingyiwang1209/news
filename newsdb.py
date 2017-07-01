@@ -37,21 +37,18 @@ class PythonDatabaseInterface:
         self.cursor.close()
         self.conn.close()
 
+formatted_path = "(regexp_split_to_array(subsq.path, E'/article/'))[2]"
 
-# Put views and variable(s) in the following area:
-
-
-q1 = subsq+"select public.articles.title, nums from public.articles "\
+q1 = "select public.articles.title, nums from public.articles "\
      "join subsq on public.articles.slug = " + formatted_path +\
      "order by nums desc limit 3;"
 
-q2 = viewer+"select public.authors.name, viewer.nums from public.authors, "\
+q2 = "select public.authors.name, viewer.nums from public.authors, "\
      "viewer where public.authors.id = viewer.author "\
      "order by viewer.nums desc;"
 
 # Only show the row(s) whose percentage is more than 1 %
-q3 = view_total + view_error + view_final + \
-     "select time, prob from final where prob > 1"
+q3 = "select time, prob from final where prob > 1"
 
 pdi = PythonDatabaseInterface("dbname=news")
 print('Most popular articles:')
